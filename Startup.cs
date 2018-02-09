@@ -28,7 +28,7 @@ namespace AutenticacaoEFCookie
             services.AddDbContext<AutenticacaoContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("BancoAutenticacao")));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                            .AddCookie(options => { options.LoginPath = "Conta/Login"; }); //Acessando outras paginas, redireciona para essa pagina
+                            .AddCookie(options => { options.LoginPath = "/Conta/Login"; }); //Acessando outras paginas, redireciona para essa pagina
 
             services.AddMvc();
         }
@@ -45,7 +45,7 @@ namespace AutenticacaoEFCookie
             app.UseMvc( routes =>{
                 routes.MapRoute(
                     name:"default",
-                    template:"{controller=Home}/{action=Index}/{id?}");
+                    template:"{controller=Financeiro}/{action=Index}/{id?}");
             });
 
             app.Run(async (context) =>

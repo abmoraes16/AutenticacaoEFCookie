@@ -1,3 +1,4 @@
+using System.Linq;
 using AutenticacaoEFCookie.Models;
 
 namespace AutenticacaoEFCookie.Dados
@@ -6,6 +7,8 @@ namespace AutenticacaoEFCookie.Dados
     {
         public static void Inicializar(AutenticacaoContext contexto) {
             contexto.Database.EnsureCreated(); //Cria o banco se ele não existir
+
+            if(contexto.Usuarios.Any()) return;
 
             var usuario = new Usuario(){
                 Nome="Amanda",
